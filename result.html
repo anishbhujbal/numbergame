@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Result</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        {% if "Excellent work!" in result %}
+            <h1>{{ result }}</h1>
+            <p>You've guessed the right number!</p>
+        {% elif "You chose easy escape." in result %}
+            <h1>{{ result }}</h1>
+            <p>Exiting the loop.</p>
+        {% else %}
+            <p>{{ result }}</p>
+        {% endif %}
+        <a id="reloadLink" href="/">Go back to the game</a>
+    </div>
+
+    <script>
+        // Check if the link should be shown and reload if necessary
+        {% if show_link %}
+            document.getElementById('reloadLink').style.display = 'block';
+        {% else %}
+            document.getElementById('reloadLink').style.display = 'none';
+            setTimeout(function() {
+                window.location.href = "/";
+            }, 1500);
+        {% endif %}
+    </script>
+    
+    
+    
+    
+    
+    
